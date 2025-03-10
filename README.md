@@ -59,7 +59,3 @@ Docker kullanarak uygulamanızı kolayca dağıtabilirsiniz. Aşağıdaki komut 
 ## Katkı
 
 Eğer bu projeye katkıda bulunmak isterseniz, lütfen bir pull request göndermeden önce `main` dalından bir branch oluşturun. Katkılarınız, projenin gelişmesine büyük katkı sağlayacaktır.
-
-## Lisans
-
-Bu proje MIT lisansı ile lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakabilirsiniz.
