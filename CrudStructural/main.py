@@ -6,7 +6,7 @@ from starlette import status #http status kodlarımızı oluşturacağız
 
 app = FastAPI()
 
-class Course:
+class Course():
      id: int
      title: str
      instructor: str
@@ -31,3 +31,13 @@ courses_db = [
     Course(6, "ML", "Ali", 4, 2021)
 ]
 
+@app.get("/courses",status_code=status.HTTP_200_OK)
+async  def get_all_courses():
+    return courses_db
+
+@app.get("/courses/{course_id}",status_code=status.HTTP_200_OK)
+async def get_course(course_id: int = Path(gt=0)):
+    for course in courses_db:
+        if course.id == course_id:
+            return course
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail='course not found')
