@@ -41,3 +41,19 @@ async def get_course(course_id: int = Path(gt=0)):
         if course.id == course_id:
             return course
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail='course not found')
+
+@app.get("/courses/",status_code=status.HTTP_200_OK)
+async def get_course_by_rating(course_rating: int = Query(gt=0 , lt=6)):
+    courses_to_return = []
+    for course in courses_db:
+        if course.rating == course_rating:
+            courses_to_return.append(course)
+    return courses_to_return
+
+@app.get("/courses/publish/", status_code=status.HTTP_200_OK)
+async def get_course_by_published_date(course_published_date: int = Query(gt=2009 , lt=2050)):
+    courses_to_return= []
+    for course in courses_db:
+        if course.published_date == course_published_date:
+            courses_to_return.append(course)
+    return courses_to_return
